@@ -5,14 +5,14 @@ from bucket import bucket_sort
 from shell import shell_sort
 import time
 
-def read_file(file_name):
+def read_file(file_name):   #alterar para ler um arquivo de numeros
     file_path = f'lists/{file_name}'
     with open(file_path, 'r', encoding='utf-8') as f:
         return f.readlines()
 
 
 def main():
-    fileName = 'nomes1k.txt'
+    fileName = 'nomes1k.txt' #alterar para o arquivo desejado
     for i in range(5):
         arr = read_file(fileName)
 

@@ -7,25 +7,33 @@ def quick_sort(arr):
     right = [x for x in arr if x > pivot]
     return quick_sort(left) + middle + quick_sort(right)
 
-def bucket_sort(names):
-    if len(names) == 0:
-        return names
+def bucket_sort(arr):
+    if len(arr) == 0:
+        return arr
 
-    # Passo 1: Criar os baldes baseados na primeira letra (A-Z)
-    buckets = {chr(i): [] for i in range(ord('A'), ord('Z') + 1)}
+    # Determine minimum and maximum values
+    min_value = min(arr)
+    max_value = max(arr)
 
-    for name in names:
-        first_letter = name[0]  # Considera a primeira letra (case insensitive)
-        if first_letter in buckets:
-            buckets[first_letter].append(name)
+    # Initialize buckets
+    bucket_count = len(arr)
+    buckets = [[] for _ in range(bucket_count)]
 
-    # Passo 2: Ordenar os baldes usando Quick Sort
-    for key in buckets:
-        buckets[key] = quick_sort(buckets[key])
+    # Distribute input array values into buckets
+    for i in range(len(arr)):
+        index = int((arr[i] - min_value) / (max_value - min_value + 1) * bucket_count)
+        buckets[index].append(arr[i])
 
-    # Passo 3: Concatenar os baldes
-    sorted_names = []
-    for key in sorted(buckets.keys()):  # Garantir a ordem alfabética dos baldes
-        sorted_names.extend(buckets[key])
+    # Sort each bucket and concatenate the result
+    sorted_array = []
+    for bucket in buckets:
+        sorted_array.extend(quick_sort(bucket))
 
-    return sorted_names
+    return sorted_array
+
+# # Example usage
+# if __name__ == "__main__":
+#     arr = [42, 32, 33, 52, 37, 47, 51]
+#     print("Original array:", arr)
+#     sorted_arr = bucket_sort(arr)
+#     print("Sorted array:", sorted_arr)
