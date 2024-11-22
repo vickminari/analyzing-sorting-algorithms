@@ -1,5 +1,4 @@
 def countingSort(arr, exp1):
-
     n = len(arr)
 
     # The output array elements that will have sorted arr
@@ -33,8 +32,6 @@ def countingSort(arr, exp1):
         arr[i] = output[i]
 
 # Method to do Radix Sort
-
-
 def radixSort(arr):
 
     # Find the maximum number to know number of digits
