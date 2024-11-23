@@ -19,7 +19,7 @@ def save_to_csv(data, filename, headers):
         writer.writerow(headers)
         writer.writerows(data)
 
-N = 150000 #alterar para o tamanho do arquivo
+N = 200000 #alterar para o tamanho do arquivo
 FILENAME = f'numbers{N}.txt' #alterar para o arquivo desejado
 REPS = 5
 
